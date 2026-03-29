@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-adonisjs
+  namespace: nodejs-adonisjs
+  labels:
+    app: nodejs-adonisjs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-adonisjs
+  template:
+    metadata:
+      labels:
+        app: nodejs-adonisjs
+    spec:
+      containers:
+      - name: nodejs-adonisjs
+        image: nodejs-adonisjs
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3333
+          name: http
+          protocol: TCP
+        env:
+        - name: APP_KEY
+          valueFrom:
+            secretKeyRef:
+              name: nodejs-adonisjs-env
+              key: APP_KEY
+      restartPolicy: Always

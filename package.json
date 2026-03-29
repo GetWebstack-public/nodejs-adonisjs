@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-adonisjs",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start": "node --loader ts-node/esm bin/server.ts"
+  },
+  "dependencies": {
+    "@adonisjs/core": "^6.0.0",
+    "reflect-metadata": "^0.2.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}
