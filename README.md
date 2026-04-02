@@ -1,44 +1,67 @@
 # nodejs-adonisjs
 
-A minimal [AdonisJS v6](https://adonisjs.com/) application running on Node.js.
+A web application example built with [AdonisJS](https://adonisjs.com/) — a full-stack MVC framework for Node.js with first-class TypeScript support.
 
-## Requirements
+## Run with gws
 
-### APP_KEY Secret
+### 1. Install the GetWebstack CLI
 
-AdonisJS requires an `APP_KEY` to encrypt cookies, sessions, and other signed data. Before deploying this application you must create this secret in the GetWebstack app.
-
-**Steps:**
-
-1. Generate a secure key by running the following command inside the project directory:
-
-   ```bash
-   node ace generate:key
-   ```
-
-   This outputs a random base64-encoded string, for example:
-
-   ```
-   oJ3hLAHJPGsTbsGpN1Q3YKpF5s3rLG0o
-   ```
-
-2. In the **GetWebstack app**, navigate to the `nodejs-adonisjs` project and open the **Secrets** section.
-
-3. Create a new secret with the following settings:
-
-   | Field | Value |
-   |-------|-------|
-   | **Type** | `environment variable` |
-   | **Name** | `APP_KEY` |
-   | **Value** | *(the key generated in step 1)* |
-
-The secret will be injected into the container at runtime via the Kubernetes secret `nodejs-adonisjs-env` and made available as the `APP_KEY` environment variable, as defined in the deployment manifest.
-
-> **Note:** Secret values are securely stored in GetWebstack and injected at runtime — never commit them to source control.
-
-## Running Locally
+Install the [GetWebstack](https://getwebstack.com) CLI ([docs](https://getwebstack.com/docs) | [installation](https://getwebstack.com/docs/installation)):
 
 ```bash
-gws init
+curl -sSL https://getwebstack.com/install.sh | bash
+```
+
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/GetWebstack-public/nodejs-adonisjs
+cd nodejs-adonisjs
+```
+
+### 3. Initialise from template setup
+
+```bash
+gws init --from-file gws.json
+```
+
+### 4. Deploy the service
+
+```bash
 gws up
 ```
+
+### 5. Stream logs
+
+```bash
+gws logs
+```
+
+### 6. See deployment status
+
+```bash
+gws status
+```
+
+## Other JS/TS Backend projects
+
+| Project | Framework | Description |
+|---|---|---|
+| [nestjs](https://github.com/GetWebstack-public/nestjs) | [NestJS](https://nestjs.com/) | Progressive Node.js framework with TypeScript |
+| [nodejs-elysia](https://github.com/GetWebstack-public/nodejs-elysia) | [Elysia](https://elysiajs.com/) | TypeScript framework for Bun with end-to-end type safety |
+| [nodejs-express](https://github.com/GetWebstack-public/nodejs-express) | [Express](https://expressjs.com/) | Fast, minimalist web framework for Node.js |
+| [nodejs-fastify](https://github.com/GetWebstack-public/nodejs-fastify) | [Fastify](https://fastify.dev/) | Fast and low overhead web framework for Node.js |
+| [nodejs-graphql-yoga](https://github.com/GetWebstack-public/nodejs-graphql-yoga) | [GraphQL Yoga](https://the-guild.dev/graphql/yoga-server) | Fully-featured GraphQL server for Node.js |
+| [nodejs-hono](https://github.com/GetWebstack-public/nodejs-hono) | [Hono](https://hono.dev/) | Ultrafast web framework for the edge |
+| [nodejs-koa](https://github.com/GetWebstack-public/nodejs-koa) | [Koa](https://koajs.com/) | Next generation web framework for Node.js |
+| [nodejs-trpc](https://github.com/GetWebstack-public/nodejs-trpc) | [tRPC](https://trpc.io/) | End-to-end typesafe APIs for TypeScript |
+| [typescript-generic](https://github.com/GetWebstack-public/typescript-generic) | — | TypeScript generics example |
+
+## Other project families
+
+| Family | Repository | Description |
+|---|---|---|
+| Go | [go-projects](https://github.com/GetWebstack-public/go-projects) | Chi, Echo, Fiber, Gin, gRPC, Hugo |
+| Python | [python-projects](https://github.com/GetWebstack-public/python-projects) | FastAPI, Django, Flask, and more |
+| JS/TS Frontend | [js-ts-frontend](https://github.com/GetWebstack-public/js-ts-frontend) | React, Next.js, Vue, and more |
+| Multirepo | [react-express-mono-repo](https://github.com/GetWebstack-public/react-express-mono-repo) | React + Express multi-service workspace |
